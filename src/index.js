@@ -1,17 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
 import reportWebVitals from './reportWebVitals';
+import Dashboard from './Components/Dashboard'
+import Heroes from './Components/Heroes'
+import Header from './Components/Header';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import { addHero } from './Actions/heroes'
+import store from './store/configStore'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+store.dispatch(addHero( { id: 20, name: 'Tornado' }))
+
+
+console.log(store.getState())
+
+//console.log(heroOne)
+
+
+
+const MyRoutes=()=>(
+
+  <BrowserRouter>
+    <Header/>
+    <Switch>
+      <Route path='/dashboard' component={Dashboard} exact={true}/>
+      <Route path='/heroes' component={Heroes}/>
+    </Switch>
+   
+  </BrowserRouter>
+ 
+)
+
+const jsx = (
+  <Provider store={store}>
+    <MyRoutes/>
+  </Provider>
+)
+
+ReactDOM.render(jsx,document.getElementById('root'))
+
+
 reportWebVitals();
