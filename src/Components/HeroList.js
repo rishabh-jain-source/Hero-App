@@ -1,9 +1,10 @@
 import React from 'react'
-const HeroList = (props) => (
+import { Heroes } from './Heroes'
+const HeroList = () => (
     <div>
-        {
-            props.hero
-        }
+        {/* {console.log(props.match.params.name)}
+        <p>{props.match.params.name}</p> */}
+        <Heroes/>
     </div>
 )
 export default HeroList

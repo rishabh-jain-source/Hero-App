@@ -2,27 +2,37 @@ import React from 'react'
 import { connect } from 'react-redux'
 import myHeroes from '../store/defaultValues'
 import HeroList from './../Components/HeroList'
+import {Link} from 'react-router-dom'
 
-const hello = () => {
-    console.log('hello')
-}
-export const Heroes = (props) => (
+
+
+export const Heroes = (props) =>
+    
+(
+    
     <div>
         <h1>Heroes</h1>
         <table>
+            <tbody>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
             </tr>
             {
                 props.heroes.map((hero) => (
-                    <tr>
+                        
+                    <tr key={hero.id}>
                         <td>{hero.id}</td>
-                        <button onClick={hello}><td>{hero.name}</td></button>
+                        <td> <Link to={`/heroes/${hero.name}`}>{hero.name}</Link></td>
                     </tr>
+                    
                 ))
-            }
-            </table>
+                }
+                </tbody>
+        </table>
+        {
+            props.match.params.name && <h3>{props.match.params.name.toUpperCase()}</h3>
+        }
     </div>
 )
 
@@ -30,8 +40,9 @@ const mapStateToProps = (state) => {
     console.log("mydata" + state)
     console.log(state[1])
     return {
-        name: 'abc',
+        
         heroes: state
+
     }
 }
 

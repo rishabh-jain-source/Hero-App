@@ -11,6 +11,7 @@ import Header from './Components/Header';
 
 import { addHero } from './Actions/heroes'
 import store from './store/configStore'
+import HeroList from './Components/HeroList';
 
 
 store.dispatch(addHero( { id: 20, name: 'Tornado' }))
@@ -28,7 +29,8 @@ const MyRoutes=()=>(
     <Header/>
     <Switch>
       <Route path='/dashboard' component={Dashboard} exact={true}/>
-      <Route path='/heroes' component={Heroes}/>
+      <Route path='/heroes' component={Heroes} exact={true}/>
+      <Route path='/heroes/:name' component={Heroes}></Route>
     </Switch>
    
   </BrowserRouter>
