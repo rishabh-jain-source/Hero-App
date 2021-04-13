@@ -1,7 +1,5 @@
 import myHeroes from "../store/defaultValues"
-console.log(myHeroes.forEach((data)=> {
-   console.log(data) 
-}))
+
 export const heroReducer = (state=myHeroes, action) => {
     switch (action.type) {
         case 'EDIT_HERO':

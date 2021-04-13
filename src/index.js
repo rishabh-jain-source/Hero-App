@@ -12,15 +12,16 @@ import Header from './Components/Header';
 import { addHero } from './Actions/heroes'
 import store from './store/configStore'
 import HeroList from './Components/HeroList';
+import Edit from './Components/edit'
 
 
 store.dispatch(addHero( { id: 20, name: 'Tornado' }))
 
 
-console.log(store.getState())
-
 //console.log(heroOne)
-
+const NoFound = () => (
+  <h1>No Component Found</h1>
+)
 
 
 const MyRoutes=()=>(
@@ -30,7 +31,9 @@ const MyRoutes=()=>(
     <Switch>
       <Route path='/dashboard' component={Dashboard} exact={true}/>
       <Route path='/heroes' component={Heroes} exact={true}/>
-      <Route path='/heroes/:name' component={Heroes}></Route>
+      <Route path='/heroes/:id' component={Heroes} exact={true}></Route>
+      <Route path='/edit/:id' component={Edit} exact={true}></Route>
+      <Route component={NoFound} ></Route>
     </Switch>
    
   </BrowserRouter>
