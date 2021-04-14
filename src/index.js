@@ -29,6 +29,7 @@ const MyRoutes=()=>(
   <BrowserRouter>
     <Header/>
     <Switch>
+    <Route path='/' component={Dashboard} exact={true}/>
       <Route path='/dashboard' component={Dashboard} exact={true}/>
       <Route path='/heroes' component={ConnectedHeroes} exact={true}/>
       <Route path='/heroes/:id' component={ConnectedHeroes} exact={true}></Route>

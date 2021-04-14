@@ -24,6 +24,7 @@ class Edit extends React.Component {
         
         this.props.editHero(this.props.match.params.id, this.state.name)
         //useHistory().goBack();
+        this.props.history.push('/')
         
     }
     
@@ -34,7 +35,7 @@ class Edit extends React.Component {
                 <h1>Edit</h1>
                 <h2>{this.state.name? `${this.state.name}  Details` : ''}</h2>
                 <form onSubmit={this.formSubmit}>
-                     <input type="text"  placeholder={this.props.match.params.id} contentEditable="false"></input> 
+                     <input type="text"  placeholder={this.props.match.params.id} disabled></input> 
                     <input type="text" placeholder='name' value={this.state.name} onChange={this.nameChange}></input>
                     <button>Save</button>
                     
