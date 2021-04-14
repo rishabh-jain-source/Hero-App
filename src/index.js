@@ -6,16 +6,16 @@ import { Provider } from 'react-redux'
 
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './Components/Dashboard'
-import Heroes from './Components/Heroes'
+import ConnectedHeroes from './Components/Heroes'
 import Header from './Components/Header';
 
 import { addHero } from './Actions/heroes'
 import store from './store/configStore'
 import HeroList from './Components/HeroList';
-import Edit from './Components/edit'
+import { ConnectedEdit } from './Components/edit'
 
 
-store.dispatch(addHero( { id: 20, name: 'Tornado' }))
+store.dispatch(addHero( { id: '20', name: 'Tornado' }))
 
 
 //console.log(heroOne)
@@ -30,9 +30,9 @@ const MyRoutes=()=>(
     <Header/>
     <Switch>
       <Route path='/dashboard' component={Dashboard} exact={true}/>
-      <Route path='/heroes' component={Heroes} exact={true}/>
-      <Route path='/heroes/:id' component={Heroes} exact={true}></Route>
-      <Route path='/edit/:id' component={Edit} exact={true}></Route>
+      <Route path='/heroes' component={ConnectedHeroes} exact={true}/>
+      <Route path='/heroes/:id' component={ConnectedHeroes} exact={true}></Route>
+      <Route path='/edit/:id' component={ConnectedEdit} exact={true}></Route>
       <Route component={NoFound} ></Route>
     </Switch>
    

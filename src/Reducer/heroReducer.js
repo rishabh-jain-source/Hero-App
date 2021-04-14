@@ -9,6 +9,8 @@ export const heroReducer = (state=myHeroes, action) => {
                         ...hero,
                         ...action.update
                     }
+                } else {
+                    return hero
                 }
             })
         case 'ADD_HERO':

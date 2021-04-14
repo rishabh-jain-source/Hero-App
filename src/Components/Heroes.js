@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import myHeroes from '../store/defaultValues'
 import HeroList from './../Components/HeroList'
+import {ConnectedHeroList} from './../Components/HeroList'
 import { Link } from 'react-router-dom'
 import Edit from './edit'
 
@@ -15,6 +16,7 @@ export const Heroes = (props) =>
 (
     
     <div>
+       
         <h1>Heroes</h1>
         <table>
             <tbody>
@@ -24,16 +26,23 @@ export const Heroes = (props) =>
             </tr>
             {
                 props.heroes.map((hero) => (   
-                    <tr key={hero.id}>
-                        <td>{hero.id}</td>
-                        <td> <Link to={`/heroes/${hero.id}`}>{hero.name}</Link></td>
-                    </tr>
+                    <>
+                        {/* <td>{hero.id}</td>
+                        <td> <Link to={`/heroes/${hero.id}/${hero.name}`}>{hero.name}</Link></td> */}
+                        
+                        <ConnectedHeroList key={hero.id} hero={hero} />
+                    </>
                 ))
                 }
                 </tbody>
         </table>
         {   <div>
-            {props.match.params.id && <div><h3>{props.match.params.id}</h3>  <Link to={`/edit/${props.match.params.id}`}><button>view detail</button></Link></div>}
+            
+            {props.match.params.id && <div><h3>{
+                props.heroes.find((heros) => {
+                     return heros.id===props.match.params.id
+                }).name.toUpperCase()+" is My Hero"
+            }</h3><Link to={`/edit/${props.match.params.id}`}><button>view detail</button></Link></div>}
             
             </div>
         }
@@ -42,11 +51,11 @@ export const Heroes = (props) =>
 )
 
 const mapStateToProps = (state) => {
-    console.log(state.heroes)
+   
     return {
         heroes: state
     }
 }
 
-const connectedHeroes = connect(mapStateToProps)(Heroes);
-export default connectedHeroes;
+const ConnectedHeroes = connect(mapStateToProps)(Heroes);
+export default ConnectedHeroes;
