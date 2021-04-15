@@ -43,9 +43,11 @@ export const Heroes = (props) =>
                      return heros.id===props.match.params.id
                 }).name.toUpperCase()+" is My Hero"
             }</h3><Link to={`/edit/${props.match.params.id}`}><button>view detail</button></Link></div>}
+
             
             </div>
         }
+            <Link to ="/addHero">Add Hero</Link>
 
     </div>
 )

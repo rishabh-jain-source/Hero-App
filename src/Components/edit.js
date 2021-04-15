@@ -7,7 +7,9 @@ class Edit extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.hero.name
+            name: this.props.hero.name,
+            id: this.props.match.params.id ? this.props.match.params.id : '',
+            error:''
         }
     }
     nameChange = (e) => {
@@ -21,10 +23,21 @@ class Edit extends React.Component {
     formSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.name)
+        if (!this.state.name) {
+            this.setState(() => {
+                return {
+                    error:'Enter Name First'
+                }
+            })
+        }
+        else {
+            
+            this.props.editHero(this.props.match.params.id, this.state.name)
+            this.props.history.goBack()
+        }
         
-        this.props.editHero(this.props.match.params.id, this.state.name)
         //useHistory().goBack();
-        this.props.history.push('/')
+        
         
     }
     
@@ -33,11 +46,12 @@ class Edit extends React.Component {
         return (
             <div>
                 <h1>Edit</h1>
-                <h2>{this.state.name? `${this.state.name}  Details` : ''}</h2>
-                <form onSubmit={this.formSubmit}>
-                     <input type="text"  placeholder={this.props.match.params.id} disabled></input> 
-                    <input type="text" placeholder='name' value={this.state.name} onChange={this.nameChange}></input>
-                    <button>Save</button>
+                <h2>{this.state.name ? `${this.state.name}  Details` : ''}</h2>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.formSubmit} className="">
+                    <input className='text-input' type="text"  placeholder={this.state.id} disabled></input> 
+                    <input className='text-input' type="text" placeholder='Name' value={this.state.name} onChange={this.nameChange}></input>
+                    <button className="save-button">Save</button>
                     
                 </form>
             </div>

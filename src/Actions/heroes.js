@@ -11,3 +11,7 @@ export const addHero = ({ id, name }) => ({
     id,name
     }
 })
+export const removeHero = (id) => ({
+  type: 'REMOVE_HERO',
+  id
+})

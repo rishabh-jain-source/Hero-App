@@ -21,16 +21,16 @@ const Dashboard = (props) => (
 
         <h1>Dashboard</h1>
         <h3>Top Heroes</h3>
-        <Link to={`/edit/${random[0]}`}><button>{props.heroes.find((hero) => {
+        <Link to={`/edit/${random[0]}`}><button className="button">{props.heroes.find((hero) => {
             return random[0]===hero.id
         }).name.toUpperCase()}</button></Link>
-        <Link to={`/edit/${random[1]}`}><button>{props.heroes.find((hero) => {
+        <Link to={`/edit/${random[1]}`}><button className="button">{props.heroes.find((hero) => {
             return random[1]===hero.id
         }).name.toUpperCase()}</button></Link>
-        <Link to={`/edit/${random[2]}`}><button>{props.heroes.find((hero) => {
+        <Link to={`/edit/${random[2]}`}><button className="button">{props.heroes.find((hero) => {
             return random[2]===hero.id
         }).name.toUpperCase()}</button></Link>
-        <Link to={`/edit/${random[3]}`}><button>{props.heroes.find((hero) => {
+        <Link to={`/edit/${random[3]}`}><button className="button">{props.heroes.find((hero) => {
             return random[3]===hero.id
         }).name.toUpperCase()}</button></Link>
     </div>

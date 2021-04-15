@@ -9,13 +9,16 @@ import Dashboard from './Components/Dashboard'
 import ConnectedHeroes from './Components/Heroes'
 import Header from './Components/Header';
 
-import { addHero } from './Actions/heroes'
+import { addHero,removeHero } from './Actions/heroes'
 import store from './store/configStore'
 import HeroList from './Components/HeroList';
 import { ConnectedEdit } from './Components/edit'
+import AddHero from './Components/AddHero';
 
 
-store.dispatch(addHero( { id: '20', name: 'Tornado' }))
+
+store.dispatch(addHero({ id: '20', name: 'Tornado' }))
+store.dispatch(removeHero({id: '14'}))
 
 
 //console.log(heroOne)
@@ -34,6 +37,7 @@ const MyRoutes=()=>(
       <Route path='/heroes' component={ConnectedHeroes} exact={true}/>
       <Route path='/heroes/:id' component={ConnectedHeroes} exact={true}></Route>
       <Route path='/edit/:id' component={ConnectedEdit} exact={true}></Route>
+      <Route path='/addHero' component={AddHero}/>
       <Route component={NoFound} ></Route>
     </Switch>
    

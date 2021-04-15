@@ -18,6 +18,8 @@ export const heroReducer = (state=myHeroes, action) => {
                 ...state,
                 action.hero
             ]
+        case 'REMOVE_HERO':
+            return state.filter(({ id }) => id !== action.id);
         default : return state
     }
 }

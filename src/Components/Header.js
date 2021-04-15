@@ -1,14 +1,14 @@
 
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const Header = () => (
     
         <div>
             <h1>Tour of Heroes</h1>
-            <Link to='/dashboard' >Dashboard</Link>
-            <Link to='/heroes' >Heroes</Link>
+            <NavLink to='/dashboard' className='head-button'>Dashboard</NavLink>
+            <NavLink to='/heroes' className='head-button'>Heroes</NavLink>
         </div>
     
 )
